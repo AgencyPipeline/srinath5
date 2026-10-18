@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margin Recovery System for D2C Brands | Clover Tech</title>
+<meta name="description" content="Stop paying for COD orders that come back and payouts that never arrive. A fixed-price system built on top of the tools you already use. For D2C brands doing 3,000+ orders a month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<!-- Paste the site's existing GTM snippet + ct_attr lead-tracking script here (same as the other landing pages). -->
+<style>
+:root{
+  --green:#1E5A3C; --green-dk:#163F2B; --mint:#9FDDB1; --mint-lt:#E3F4E8;
+  --ink:#0C1A17; --ink-2:#3A4A45; --paper:#F6F5F0; --card:#FFFFFF; --line:#DCDAD1;
+  --warn:#9A3B12; --warn-bg:#FBEDE4;
+  --serif:'Newsreader',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--green)}
+img{max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,5.4vw,3.6rem)}
+h2{font-size:clamp(1.7rem,3.8vw,2.5rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+section{padding:72px 0}
+.eyebrow{color:var(--green);margin-bottom:14px;display:block}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(246,245,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
+.brand svg{width:26px;height:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:10px;border:0;font:600 1rem var(--sans);text-decoration:none;cursor:pointer;transition:background .15s}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-dk)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.nav .btn{min-height:42px;padding:0 16px;font-size:.92rem}
+
+/* hero */
+.hero{padding:64px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero p.lead{font-size:1.2rem;color:var(--ink-2);margin:22px 0 28px;max-width:34ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.fit-line{margin-top:22px;font-size:.95rem;color:var(--ink-2)}
+.fit-line strong{color:var(--ink)}
+.leak-card{background:var(--ink);color:#fff;border-radius:18px;padding:28px}
+.leak-card .mono{color:var(--mint)}
+.leak-row{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.leak-row:last-of-type{border-bottom:0}
+.leak-row span:last-child{font-family:var(--mono);color:var(--mint);white-space:nowrap}
+.leak-card small{display:block;margin-top:14px;color:rgba(255,255,255,.6);font-size:.8rem;line-height:1.4}
+
+/* problem */
+.problem{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;align-items:start}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks svg{flex:0 0 22px;width:22px;height:22px;margin-top:2px;color:var(--warn)}
+.note{margin-top:24px;padding:18px;border-radius:12px;background:var(--mint-lt);font-size:.95rem}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.field{margin-bottom:20px}
+.field:last-child{margin-bottom:0}
+.field label{display:flex;justify-content:space-between;gap:10px;font-weight:600;margin-bottom:8px;font-size:.96rem}
+.field label output{font-family:var(--mono);font-weight:500;color:var(--green)}
+input[type=range]{width:100%;accent-color:var(--green);height:28px}
+.result{display:grid;gap:14px}
+.big{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:600;color:var(--warn);line-height:1}
+.res-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:.96rem}
+.res-row b{font-family:var(--mono);font-weight:500;white-space:nowrap}
+.res-row.good b{color:var(--green)}
+.fine{font-size:.8rem;color:var(--ink-2);margin-top:10px;line-height:1.45}
+
+/* build list */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.tile .num{font-family:var(--mono);font-size:.8rem;color:var(--green);margin-bottom:10px;display:block}
+.tile h3{font-size:1.15rem;margin-bottom:8px}
+.tile p{color:var(--ink-2);font-size:.95rem}
+.keep{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.92rem;color:var(--ink-2)}
+.chip{font-family:var(--mono);font-size:.78rem;padding:6px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+
+/* steps & pricing */
+.dark{background:var(--ink);color:#fff}
+.dark .eyebrow{color:var(--mint)}
+.dark p.sub{color:rgba(255,255,255,.72)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.step{border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.step.hero-step{background:var(--green);border-color:var(--green)}
+.step .mono{color:var(--mint)}
+.price{font-family:var(--serif);font-size:2.1rem;font-weight:600;line-height:1}
+.price small{font-family:var(--sans);font-size:.9rem;font-weight:500;opacity:.8}
+.step ul{margin:0;padding-left:18px;color:rgba(255,255,255,.82);font-size:.95rem;display:grid;gap:6px}
+.pay{margin-top:26px;padding:18px 20px;border-radius:12px;background:rgba(255,255,255,.06);font-size:.95rem;color:rgba(255,255,255,.85)}
+.pay b{color:#fff}
+
+/* guarantees */
+.guar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
+.guar .tile{border-color:var(--green);border-width:1.5px}
+.guar svg{width:28px;height:28px;color:var(--green);margin-bottom:10px}
+
+/* fit */
+.fit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
+.fit ul{margin:12px 0 0;padding-left:20px;display:grid;gap:8px;color:var(--ink-2)}
+.fit .no{background:var(--warn-bg);border-color:#EBC9B5}
+
+/* proof */
+.proof{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+.proof p{max-width:60ch;color:var(--ink-2)}
+
+/* faq */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 20px;margin-bottom:10px}
+summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);font-size:1.3rem;color:var(--green)}
+details[open] summary::after{content:"−"}
+details p{padding:0 0 18px;color:var(--ink-2)}
+
+/* form */
+.form-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+form .full{grid-column:1/-1}
+form label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+form input,form select,form textarea{width:100%;min-height:48px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font:400 1rem var(--sans);color:var(--ink);background:#fff}
+form textarea{min-height:96px;resize:vertical}
+form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--mint-lt)}
+.form-msg{display:none;padding:16px;border-radius:12px;font-size:.95rem}
+.form-msg.ok{display:block;background:var(--mint-lt)}
+.form-msg.err{display:block;background:var(--warn-bg)}
+.side-points{display:grid;gap:16px;margin-top:22px}
+.side-points div{display:flex;gap:12px}
+.side-points span.mono{color:var(--green);flex:0 0 28px}
+
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--ink-2)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+@media (max-width:900px){
+  .hero-grid,.two,.calc,.form-wrap{grid-template-columns:1fr}
+  .grid3,.steps{grid-template-columns:1fr}
+  .guar,.fit{grid-template-columns:1fr}
+  section{padding:56px 0}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .nav .btn{display:none}
+  form{grid-template-columns:1fr;padding:20px}
+  .leak-card,.panel{padding:20px}
+  .cta-row .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1E5A3C" stroke-width="2" aria-hidden="true"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="8" r="4"/><circle cx="8" cy="16" r="4"/><circle cx="16" cy="16" r="4"/></svg>
+      Clover Tech
+    </a>
+    <a class="btn btn-primary" href="#book">Book a Profit Leak Audit</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="mono eyebrow">For D2C brands doing 3,000+ orders a month</span>
+      <h1>Stop paying for orders that come back and payouts that never arrive.</h1>
+      <p class="lead">We build a Margin Recovery System on top of the tools you already use. It catches risky COD orders, rescues failed deliveries, and matches every payout to every order.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#book">Book a Profit Leak Audit</a>
+        <a class="btn btn-ghost" href="#calculator">Calculate your leak</a>
+      </div>
+      <p class="fit-line"><strong>Fixed price from ₹6 lakh. Live in about 10 weeks.</strong> Start with a 7-day audit for ₹45,000, fully adjusted in the build price.</p>
+    </div>
+    <aside class="leak-card" aria-label="Where the money goes">
+      <span class="mono">Where the margin leaks</span>
+      <div class="leak-row"><span>COD orders refused at the door</span><span>RTO</span></div>
+      <div class="leak-row"><span>Failed deliveries nobody follows up</span><span>NDR</span></div>
+      <div class="leak-row"><span>Courier that can't deliver to that pin code</span><span>Routing</span></div>
+      <div class="leak-row"><span>Marketplace payouts short of what's owed</span><span>Settlements</span></div>
+      <div class="leak-row"><span>Margin you think you make vs what you make</span><span>True CM</span></div>
+      <small>Industry reports from 2026 put COD return rates at roughly 25–40% for Indian D2C brands. Your audit uses your own data, not averages.</small>
+    </aside>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="wrap two">
+    <div>
+      <span class="mono eyebrow">Sound familiar?</span>
+      <h2>Sales are up. Profit isn't. And nobody can say exactly where it went.</h2>
+    </div>
+    <div>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><span>A big share of COD orders come back, and you pay shipping both ways on every one.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><span>Failed deliveries sit in the courier panel until they quietly turn into returns.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><span>Your team downloads Amazon, Flipkart and courier reports into Excel every month to match payouts.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><span>You have 20+ apps installed, and none of them tells you the margin per channel, SKU or pin code.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><span>Every new tool charges a percentage of GMV, so its cost grows every time you grow.</span></li>
+      </ul>
+      <p class="note">You don't need another app. You need the gaps between your apps closed, and the leak measured in rupees.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+  <div class="wrap">
+    <span class="mono eyebrow">Leak calculator</span>
+    <h2>What COD returns cost you every month</h2>
+    <div class="calc">
+      <div class="panel">
+        <div class="field">
+          <label for="orders">Orders per month <output id="ordersOut">10,000</output></label>
+          <input type="range" id="orders" min="1000" max="50000" step="500" value="10000">
+        </div>
+        <div class="field">
+          <label for="cod">Share of orders that are COD <output id="codOut">60%</output></label>
+          <input type="range" id="cod" min="10" max="90" step="5" value="60">
+        </div>
+        <div class="field">
+          <label for="rto">COD return rate (RTO) <output id="rtoOut">30%</output></label>
+          <input type="range" id="rto" min="5" max="50" step="1" value="30">
+        </div>
+        <div class="field">
+          <label for="cost">Loss per returned order <output id="costOut">₹200</output></label>
+          <input type="range" id="cost" min="80" max="500" step="10" value="200">
+        </div>
+      </div>
+      <div class="panel result" aria-live="polite">
+        <span class="mono" style="color:var(--ink-2)">COD returns are costing you</span>
+        <div class="big" id="monthLoss">₹3,60,000</div>
+        <span style="color:var(--ink-2)">every month, before counting the ad money spent to win those orders.</span>
+        <div class="res-row"><span>Returned COD orders a month</span><b id="rtoCount">1,800</b></div>
+        <div class="res-row"><span>Per year</span><b id="yearLoss">₹43,20,000</b></div>
+        <div class="res-row good"><span>Recovered if returns drop 5 points</span><b id="save5">₹7,20,000 / yr</b></div>
+        <div class="res-row good"><span>Recovered if returns drop 10 points</span><b id="save10">₹14,40,000 / yr</b></div>
+        <p class="fine">Illustration only, using the numbers you set. Payout mismatches and fees are not included here; the audit measures both from your real data.</p>
+        <a class="btn btn-primary" href="#book" style="margin-top:6px">Get your real number in 7 days</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section style="padding-top:24px">
+  <div class="wrap">
+    <span class="mono eyebrow">What we build</span>
+    <h2>One system. Seven parts. Your code, your data.</h2>
+    <div class="grid3">
+      <div class="tile"><span class="num">01</span><h3>COD risk scoring</h3><p>Every COD order scored by pin code, customer history, order value and time of day before it ships.</p></div>
+      <div class="tile"><span class="num">02</span><h3>WhatsApp confirm + prepaid nudge</h3><p>Risky orders confirmed on WhatsApp. No reply, no dispatch. A UPI link with a small discount goes out within minutes.</p></div>
+      <div class="tile"><span class="num">03</span><h3>Voice calls in Hindi and English</h3><p>An AI caller verifies high-risk COD orders and follows up failed deliveries. Every call outcome is logged.</p></div>
+      <div class="tile"><span class="num">04</span><h3>Failed-delivery recovery</h3><p>Reschedules, fixes addresses and chases the courier the same day, instead of waiting for the return.</p></div>
+      <div class="tile"><span class="num">05</span><h3>Courier routing by pin code</h3><p>Each order goes to the courier that actually delivers in that pin code, based on your own delivery history.</p></div>
+      <div class="tile"><span class="num">06</span><h3>Payout matching</h3><p>Shopify, Razorpay, COD remittances, Amazon and Flipkart settlements matched to orders. Short payments flagged.</p></div>
+      <div class="tile" style="grid-column:1/-1"><span class="num">07</span><h3>True-margin dashboard on your phone</h3><p>Margin after returns, fees and ad spend, by channel, SKU, pin code and courier. Refreshed daily, read-only.</p></div>
+    </div>
+    <div class="keep"><span>Works alongside what you already run:</span><span class="chip">Shopify</span><span class="chip">GoKwik / Shopflo</span><span class="chip">Shiprocket / Delhivery</span><span class="chip">Interakt / AiSensy</span><span class="chip">Unicommerce</span><span class="chip">Amazon</span><span class="chip">Flipkart</span><span class="chip">Tally / Busy</span></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS / PRICING -->
+<section class="dark" id="pricing">
+  <div class="wrap">
+    <span class="mono eyebrow">How it works and what it costs</span>
+    <h2>Fixed price, in writing, before we start.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="mono">Step 1 · 7 working days</span>
+        <h3>Profit Leak Audit</h3>
+        <div class="price">₹45,000</div>
+        <ul>
+          <li>You share 6 months of Shopify, courier, COD and marketplace exports</li>
+          <li>Rupee leak report: RTO by pin code, courier, SKU and hour</li>
+          <li>Unmatched payouts and true margin per channel</li>
+          <li>Fixed-price build quote with expected recovery</li>
+          <li>Fully adjusted in the build price</li>
+        </ul>
+      </div>
+      <div class="step hero-step">
+        <span class="mono">Step 2 · about 10 weeks</span>
+        <h3>Margin Recovery Build</h3>
+        <div class="price">₹6,00,000 <small>fixed</small></div>
+        <ul>
+          <li>All seven parts above, built on your stack</li>
+          <li>Rules tuned on your own order history</li>
+          <li>Team training and written runbooks</li>
+          <li>Prefer lower upfront? ₹3.5 lakh fixed + 15% of verified RTO savings for 6 months</li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="mono">Step 3 · monthly, optional</span>
+        <h3>Run &amp; Improve</h3>
+        <div class="price">₹50–75k <small>/ month</small></div>
+        <ul>
+          <li>Rule tuning as couriers and categories change</li>
+          <li>Monthly leak report with rupees recovered</li>
+          <li>New channels and couriers connected</li>
+          <li>A named engineer, not a ticket queue</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pay"><b>Payments 40 / 40 / 20:</b> 40% at signing, 40% when you see it working on your own data, 20% at launch. Third-party costs (WhatsApp, calling minutes, hosting) are billed at actual cost.</p>
+  </div>
+</section>
+
+<!-- GUARANTEES -->
+<section>
+  <div class="wrap">
+    <span class="mono eyebrow">Our risk, not yours</span>
+    <h2>Two guarantees, written into the contract</h2>
+    <div class="guar">
+      <div class="tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        <h3>Audit guarantee</h3>
+        <p style="color:var(--ink-2);margin-top:8px">If the audit can't show at least ₹12 lakh a year in recoverable leak, you get the ₹45,000 back.</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        <h3>Results guarantee</h3>
+        <p style="color:var(--ink-2);margin-top:8px">If COD returns don't fall by at least 5 percentage points within 60 days of launch, versus your audit baseline, we keep working free until they do, or refund the final 20%. Requires your team to apply the agreed cancel rules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="mono eyebrow">Who this is for</span>
+    <h2>Built for brands with a real leak to fix</h2>
+    <div class="fit">
+      <div class="tile">
+        <h3>A good fit</h3>
+        <ul>
+          <li>₹1–5 crore in monthly sales, 3,000+ orders a month</li>
+          <li>40% or more of orders on COD</li>
+          <li>Your own Shopify site plus Amazon, Flipkart or quick commerce</li>
+          <li>Fashion, footwear, beauty, electronics accessories, home</li>
+          <li>Founder, operations head or finance head who owns margin</li>
+        </ul>
+      </div>
+      <div class="tile no">
+        <h3>Not a fit</h3>
+        <ul>
+          <li>Stores under ₹50 lakh a month: a ready-made app will do</li>
+          <li>Marketplace-only sellers with no own site</li>
+          <li>Brands with a 5+ person in-house engineering team</li>
+          <li>Anyone looking for a new store or a chatbot</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="proof">
+      <div>
+        <span class="mono eyebrow">Who builds it</span>
+        <p>Clover Tech is a Bengaluru engineering studio led by Srinath K. We have delivered AI and automation systems for clients in Germany, Australia and the US. Every build is done by senior engineers, and we take on a small number of builds at a time.</p>
+      </div>
+      <a class="btn btn-ghost" href="#book">Talk to Srinath</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <span class="mono eyebrow">Questions</span>
+    <h2 style="margin-bottom:24px">Before you book</h2>
+    <details><summary>We already use GoKwik or Shopflo. Why do we need this?</summary><p>Keep them. They work at checkout. This system covers what happens after the order: confirmation, failed deliveries, courier choice, payout matching and true margin. Your audit shows how much still leaks with your current tools in place.</p></details>
+    <details><summary>Do we have to replace any of our tools?</summary><p>No. We connect to Shopify, your courier aggregator, your WhatsApp provider and your marketplaces. If an app is costing more than it saves, the audit will say so, and the choice is yours.</p></details>
+    <details><summary>Who owns the system?</summary><p>You do. Code, data and accounts are in your company's name on final payment. No per-user or per-order fee to us.</p></details>
+    <details><summary>What do you need from us for the audit?</summary><p>Read-only exports for the last 6 months: Shopify orders, courier shipment and NDR reports, COD remittance reports, payment gateway and marketplace settlements. We sign an NDA before you share anything.</p></details>
+    <details><summary>How fast will we see results?</summary><p>COD confirmation and failed-delivery recovery usually go live first, within the first half of the build. The guarantee is measured over the 60 days after launch.</p></details>
+    <details><summary>What about customer data and calls?</summary><p>We only use the order and contact data you already hold, for order verification and delivery follow-up. Consent and calling rules are agreed with your team in the contract.</p></details>
+  </div>
+</section>
+
+<!-- FORM -->
+<section id="book" class="problem">
+  <div class="wrap form-wrap">
+    <div>
+      <span class="mono eyebrow">Book a Profit Leak Audit</span>
+      <h2>Find out what your margin leak really is</h2>
+      <div class="side-points">
+        <div><span class="mono">01</span><p>Fill in the form. It takes about a minute.</p></div>
+        <div><span class="mono">02</span><p>Srinath calls you within one working day for a 20-minute fit check.</p></div>
+        <div><span class="mono">03</span><p>If it's a fit, the audit starts within the week. ₹45,000, refunded if we can't find ₹12 lakh a year.</p></div>
+      </div>
+    </div>
+    <form id="leadForm" novalidate>
+      <div><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name"></div>
+      <div><label for="f-role">Your role</label>
+        <select id="f-role" name="role" required>
+          <option value="">Select</option>
+          <option>Owner / Director</option><option>CFO / Finance head</option><option>Operations / Sales head</option><option>Manager</option><option>Other</option>
+        </select></div>
+      <div><label for="f-phone">WhatsApp number</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+91"></div>
+      <div><label for="f-email">Work email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+      <div><label for="f-brand">Brand name</label><input id="f-brand" name="company" required autocomplete="organization"></div>
+      <div><label for="f-site">Website</label><input id="f-site" name="website" type="url" placeholder="https://"></div>
+      <div><label for="f-orders">Orders per month</label>
+        <select id="f-orders" name="orders" required>
+          <option value="">Select</option>
+          <option value="under-1000">Under 1,000</option><option value="1000-3000">1,000 – 3,000</option><option value="3000-10000">3,000 – 10,000</option><option value="10000-30000">10,000 – 30,000</option><option value="30000+">30,000+</option>
+        </select></div>
+      <div><label for="f-cod">Share of orders on COD</label>
+        <select id="f-cod" name="cod" required>
+          <option value="">Select</option>
+          <option value="under-20">Under 20%</option><option value="20-40">20 – 40%</option><option value="40-60">40 – 60%</option><option value="60+">60%+</option>
+        </select></div>
+      <div class="full"><label for="f-budget">Budget for fixing this</label>
+        <select id="f-budget" name="budget" required>
+          <option value="">Select</option>
+          <option value="under">Under ₹1.5 lakh</option><option value="1.5-3">₹1.5 – 3 lakh</option><option value="3-6">₹3 – 6 lakh</option><option value="6+">₹6 lakh+</option>
+        </select></div>
+      <div class="full"><label for="f-problem">Biggest leak right now (optional)</label><textarea id="f-problem" name="problem" placeholder="e.g. COD returns over 30% in Tier 2, Flipkart payouts never match"></textarea></div>
+      <div class="full"><button class="btn btn-primary" type="submit" id="f-submit" style="width:100%">Book my Profit Leak Audit</button></div>
+      <div class="full form-msg" id="formMsg" role="status"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Clover Tech · Bengaluru</span>
+    <span><a href="mailto:sri@clovertech.in">sri@clovertech.in</a> · +91 91805 66962</span>
+  </div>
+</footer>
+
+<script>
+/* ---- Leak calculator ---- */
+(function(){
+  var inr = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var num = function(n){ return Math.round(n).toLocaleString('en-IN'); };
+  var $ = function(id){ return document.getElementById(id); };
+  function calc(){
+    var orders = +$('orders').value, cod = +$('cod').value/100, rto = +$('rto').value/100, cost = +$('cost').value;
+    $('ordersOut').textContent = num(orders);
+    $('codOut').textContent = Math.round(cod*100) + '%';
+    $('rtoOut').textContent = Math.round(rto*100) + '%';
+    $('costOut').textContent = inr(cost);
+    var codOrders = orders*cod, returns = codOrders*rto, monthly = returns*cost;
+    $('rtoCount').textContent = num(returns);
+    $('monthLoss').textContent = inr(monthly);
+    $('yearLoss').textContent = inr(monthly*12);
+    var s5 = codOrders*Math.min(.05, rto)*cost*12, s10 = codOrders*Math.min(.10, rto)*cost*12;
+    $('save5').textContent = inr(s5) + ' / yr';
+    $('save10').textContent = inr(s10) + ' / yr';
+  }
+  ['orders','cod','rto','cost'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  calc();
+})();
+
+/* ---- Lead form ----
+   FORM_ENDPOINT: the live Apps Script web app /exec URL used by the other landing pages.
+   Qualified = 3,000+ orders/month AND budget ₹3 lakh+ (matches the ₹3.5L hybrid and ₹6L build). */
+var FORM_ENDPOINT = 'PASTE_APPS_SCRIPT_EXEC_URL_HERE';
+(function(){
+  var form = document.getElementById('leadForm'), msg = document.getElementById('formMsg'), btn = document.getElementById('f-submit');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'full form-msg'; msg.textContent = '';
+    if(!form.checkValidity()){
+      msg.className = 'full form-msg err';
+      msg.textContent = 'Please fill in every required field.';
+      var bad = form.querySelector(':invalid'); if(bad) bad.focus();
+      return;
+    }
+    var d = Object.fromEntries(new FormData(form).entries());
+    var bigEnough = ['3000-10000','10000-30000','30000+'].indexOf(d.orders) > -1;
+    var budgetOk = ['3-6','6+'].indexOf(d.budget) > -1;
+    d.qualified = (bigEnough && budgetOk) ? 'yes' : 'no';
+    d.offer = 'margin-recovery';
+    d.team = bigEnough ? '10-49' : '1-9'; /* keeps the existing sheet/Zoho team field populated */
+    d.lead_id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now());
+    d.landing_page = location.pathname;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(FORM_ENDPOINT, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(d) })
+      .then(function(){
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event:'ct_lead', offer:d.offer, qualified:d.qualified, lead_id:d.lead_id });
+        form.reset();
+        msg.className = 'full form-msg ok';
+        msg.textContent = d.qualified === 'yes'
+          ? 'Thanks. Srinath will call you within one working day.'
+          : 'Thanks. We will review your details and reply by email.';
+      })
+      .catch(function(){
+        msg.className = 'full form-msg err';
+        msg.textContent = 'Something went wrong. Please email sri@clovertech.in or try again.';
+      })
+      .finally(function(){ btn.disabled = false; btn.textContent = 'Book my Profit Leak Audit'; });
+  });
+})();
+</script>
+</body>
+</html>
